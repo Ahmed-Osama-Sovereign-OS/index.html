@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AO AI STUDIO | أحمد أسامة للميديا الذكية</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cloudflare.com">
+</head>
+<body>
+
+    <!-- 🎬 الشاشة الافتتاحية السينمائية (Cinematic Splash Screen) -->
+    <div id="splash-screen" class="splash-container">
+        <div class="splash-content">
+            <div class="cinema-logo">AO</div>
+            <h1 class="cinema-title">AHMED OSAMA</h1>
+            <p class="cinema-subtitle">AI MEDIA STUDIO</p>
+            <div class="cinema-loader"><span></span></div>
+        </div>
+    </div>
+
+    <!-- 🌐 الواجهة الرئيسية الفورية للمنصة -->
+    <div id="main-app" class="app-container hidden">
+        
+        <!-- الهيدر العلوي وشريط التنقل للشركة -->
+        <header class="main-header">
+            <div class="brand">
+                <div class="mini-logo">AO</div>
+                <h2>أحمد أسامة <span class="badge">AI STUDIO</span></h2>
+            </div>
+            <nav class="main-nav">
+                <button class="nav-btn active" data-target="image-hub"><i class="fa-solid fa-image"></i> استوديو الصور</button>
+                <button class="nav-btn" data-target="audio-hub"><i class="fa-solid fa-volume-high"></i> هندسة الصوت</button>
+                <button class="nav-btn" data-target="video-hub"><i class="fa-solid fa-video"></i> مونتاج الفيديو</button>
+            </nav>
+        </header>
+
+        <!-- محتوى بيئة العمل الرئيسي -->
+        <main class="content-area">
+
+            <!-- 🖼️ 1. استوديو الصور العملاق (توليد ومعالجة وتعديل حقيقي) -->
+            <section id="image-hub" class="tab-content active">
+                <div class="studio-grid">
+                    <div class="control-panel">
+                        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> توليد بالذكاء الاصطناعي</h3>
+                        <div class="input-wrapper">
+                            <textarea id="img-prompt" placeholder="اكتب وصف الصورة بدقة هنا... (مثال: أسد يرتدي تاجاً ملكياً في شوارع مدينة مستقبلية مضيئة، إضاءة سينمائية، تفاصيل خارقة)"></textarea>
+                            <button id="btn-generate-img" class="btn-neon"><i class="fa-solid fa-bolt"></i> إطلاق التوليد (Flux.1)</button>
+                        </div>
+
+                        <h3 class="mt-20"><i class="fa-solid fa-sliders"></i> أدوات التعديل الحقيقية</h3>
+                        <div class="upload-zone" id="img-dropzone">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <p>ارفع صورة من جهازك لتعديلها على الـ Canvas</p>
+                            <input type="file" id="img-file-input" accept="image/*" hidden>
+                        </div>
+
+                        <div class="editor-actions">
+                            <label>تطبيق فلاتر ألوان مباشرة:</label>
+                            <select id="img-filter">
+                                <option value="none">بدون فلتر</option>
+                                <option value="grayscale">أبيض وأسود كلاسيكي (Cinema)</option>
+                                <option value="sepia">تأثير دافئ عتيق (Sepia)</option>
+                                <option value="invert">عكس الألوان بالكامل (Invert)</option>
+                                <option value="blur">تأثير ضبابي سينمائي (Blur)</option>
+                            </select>
+
+                            <label class="mt-10">التحكم الهندسي بالأبعاد:</label>
+                            <div class="btn-group">
+                                <button class="btn-tool" id="btn-rotate-img"><i class="fa-solid fa-rotate"></i> تدوير الكود 90°</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="canvas-panel">
+                        <div class="work-surface">
+                            <div id="img-loading" class="loader-overlay hidden">
+                                <div class="spinner"></div>
+                                <p>جاري معالجة وتشكيل الكود بدقة عبر محركات الذكاء الاصطناعي...</p>
+                            </div>
+                            <div id="img-placeholder" class="placeholder-view">
+                                <i class="fa-regular fa-images"></i>
+                                <p>شاشة العرض والمعاينة الرئيسية الجبارة للأكواد الناتجة</p>
+                            </div>
+                            <canvas id="image-canvas" class="hidden"></canvas>
+                        </div>
+                        <div class="footer-actions hidden" id="img-footer-actions">
+                            <button id="btn-download-img" class="btn-success"><i class="fa-solid fa-download"></i> حفظ وتنزيل الصورة النهائية</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🎵 2. استوديو هندسة الصوت (لوحة تحكم وقص ومؤثرات حقيقية) -->
+            <section id="audio-hub" class="tab-content">
+                <div class="studio-grid">
+                    <div class="control-panel">
+                        <h3><i class="fa-solid fa-waveform"></i> استيراد وتجهيز المقطع</h3>
+                        <div class="upload-zone" id="audio-dropzone">
+                            <i class="fa-solid fa-file-audio"></i>
+                            <p>اسحب ملف الصوت هنا للتحليل والقص (MP3 / WAV)</p>
+                            <input type="file" id="audio-file-input" accept="audio/*" hidden>
+                        </div>
+
+                        <div class="audio-info hidden" id="audio-meta">
+                            <p id="audio-name"><i class="fa-solid fa-music"></i> اسم الملف: </p>
+                        </div>
+
+                        <h3 class="mt-20"><i class="fa-solid fa-magic"></i> فلاتر ومحسنات السمعيات</h3>
+                        <div class="effects-grid">
+                            <button id="btn-bass-boost" class="btn-effect"><i class="fa-solid fa-drum"></i> تضخيم القرار والبيس (Bass Boost)</button>
+                            <button id="btn-echo" class="btn-effect"><i class="fa-solid fa-podcast"></i> صدى صوت سينمائي (Echo Effect)</button>
+                        </div>
+
+                        <h3 class="mt-20"><i class="fa-solid fa-scissors"></i> لوحة قص الصوت بدقة</h3>
+                        <div class="range-inputs">
+                            <label>وقت بدء القطع (بالثواني):</label>
+                            <input type="number" id="audio-start" value="0" min="0">
+                            <label>وقت نهاية القطع (بالثواني):</label>
+                            <input type="number" id="audio-end" value="10" min="1">
+                        </div>
+                        <button id="btn-trim-audio" class="btn-neon mt-10"><i class="fa-solid fa-scissors"></i> تنفيذ هندسة وقص المقطع</button>
+                    </div>
+
+                    <div class="canvas-panel">
+                        <div class="work-surface">
+                            <div id="audio-placeholder" class="placeholder-view">
+                                <i class="fa-solid fa-sliders"></i>
+                                <p>ارفع ملف صوتي لتفعيل الموجات التفاعلية والتحكم الكامل</p>
+                            </div>
+                            <div id="audio-player-container" class="audio-player-box hidden">
+                                <div class="wave-visualizer" id="visualizer">
+                                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                                </div>
+                                <audio id="main-audio-element" controls></audio>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🎥 3. استوديو مونتاج وفلاتر الفيديو السينمائي -->
+            <section id="video-hub" class="tab-content">
+                <div class="studio-grid">
+                    <div class="control-panel">
+                        <h3><i class="fa-solid fa-film"></i> استيراد مسار فيديو</h3>
+                        <div class="upload-zone" id="video-dropzone">
+                            <i class="fa-solid fa-video"></i>
+                            <p>ارفع مقطع الفيديو للتعديل والمونتاج الفوري (MP4)</p>
+                            <input type="file" id="video-file-input" accept="video/mp4" hidden>
+                        </div>
+
+                        <h3 class="mt-20"><i class="fa-solid fa-palette"></i> فلاتر سينمائية للفيديو</h3>
+                        <select id="video-filter-select">
+                            <option value="none">ألوان وتدريجات طبيعية</option>
+                            <option value="grayscale(1)">سينما عتيقة (أبيض وأسود كلاسيك)</option>
+                            <option value="sepia(0.8) contrast(1.2)">هوليوود دافئ (Vintage Cinema)</option>
+                            <option value="hue-rotate(90deg)">طابع سايبربرانك مدمج</option>
+                        </select>
+
+                        <h3 class="mt-20"><i class="fa-solid fa-font"></i> دمج نص وعلامة مائية فوق الفيديو</h3>
+                        <input type="text" id="video-text-input" placeholder="اكتب النص هنا (مثال: تصوير أحمد أسامة AI)">
+                        <div class="range-inputs">
+                            <label>حجم الخط (بكسل):</label>
+                            <input type="number" id="video-text-size" value="32">
+                            <label>لون خط التوهج:</label>
+                            <input type="color" id="video-text-color" value="#00f0ff">
+                        </div>
