@@ -1,0 +1,174 @@
+/* 🎨 الألوان السينمائية لشركة أحمد أسامة: الأسود الفخم والنيون المضيء */
+:root {
+    --bg-dark: #05070c;
+    --bg-surface: #0c101b;
+    --bg-card: #131929;
+    --neon-blue: #00f0ff;
+    --neon-hover: #00b8cc;
+    --text-white: #ffffff;
+    --text-muted: #6b7c96;
+    --neon-green: #00ff87;
+    --border-color: #1e2942;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+/* 🎬 تصميم الشاشة الافتتاحية السينمائية */
+.splash-container {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: var(--bg-dark);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease-out;
+}
+
+.splash-content {
+    text-align: center;
+}
+
+.cinema-logo {
+    font-size: 80px;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--neon-blue);
+    text-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+    letter-spacing: 5px;
+    margin-bottom: 10px;
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.cinema-title {
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: var(--text-white);
+    margin-bottom: 5px;
+}
+
+.cinema-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.cinema-loader {
+    width: 150px; height: 3px; background: rgba(255,255,255,0.1); margin: 0 auto; border-radius: 5px; overflow: hidden;
+}
+.cinema-loader span {
+    display: block; width: 50%; height: 100%; background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); animation: loadMove 1.5s infinite linear;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { text-shadow: 0 0 20px rgba(0, 240, 255, 0.3); opacity: 0.8; }
+    50% { text-shadow: 0 0 40px rgba(0, 240, 255, 0.8); opacity: 1; }
+}
+@keyframes loadMove { 0% { transform: translateX(-100%); } 100% { transform: translateX(200%); } }
+
+/* 🌐 واجهة المنصة والتطبيق الرئيسي */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand { display: flex; align-items: center; gap: 15px; }
+.mini-logo {
+    background: transparent; border: 2px solid var(--neon-blue); color: var(--neon-blue); padding: 5px 10px; font-weight: bold; border-radius: 5px; box-shadow: 0 0 10px rgba(0,240,255,0.2);
+}
+.badge { background: rgba(0, 240, 255, 0.1); color: var(--neon-blue); font-size: 11px; padding: 3px 8px; border-radius: 4px; margin-right: 10px; }
+
+.main-nav { display: flex; gap: 15px; }
+.nav-btn {
+    background: transparent; border: none; color: var(--text-muted); padding: 10px 20px; font-weight: 600; cursor: pointer; border-radius: 6px; transition: 0.3s;
+}
+.nav-btn:hover, .nav-btn.active { color: var(--neon-blue); background: rgba(0, 240, 255, 0.05); }
+
+/* أشرطة التحكم ومساحات المعالجة */
+.content-area { flex: 1; padding: 25px 40px; overflow-y: auto; }
+.tab-content { display: none; height: 100%; }
+.tab-content.active { display: block; }
+
+.studio-grid { display: grid; grid-template-columns: 350px 1fr; gap: 30px; height: 100%; }
+
+.control-panel {
+    background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; display: flex; flex-direction: column; gap: 15px;
+}
+.control-panel h3 { font-size: 15px; color: var(--neon-blue); border-bottom: 1px solid var(--border-color); padding-bottom: 8px; }
+
+.input-wrapper textarea {
+    width: 100%; height: 80px; background: var(--bg-dark); border: 1px solid var(--border-color); color: white; padding: 10px; border-radius: 8px; resize: none; outline: none; margin-bottom: 10px;
+}
+
+.btn-neon {
+    width: 100%; background: var(--neon-blue); color: var(--bg-dark); border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px rgba(0,240,255,0.3); transition: 0.3s;
+}
+.btn-neon:hover { background: var(--neon-hover); box-shadow: 0 0 25px var(--neon-blue); }
+
+.upload-zone {
+    border: 2px dashed var(--border-color); padding: 25px; text-align: center; border-radius: 10px; cursor: pointer; transition: 0.3s;
+}
+.upload-zone:hover { border-color: var(--neon-blue); background: rgba(0, 240, 255, 0.02); }
+.upload-zone i { font-size: 30px; color: var(--neon-blue); margin-bottom: 10px; }
+
+select, input[type="number"], input[type="text"] {
+    width: 100%; padding: 10px; background: var(--bg-dark); border: 1px solid var(--border-color); color: white; border-radius: 6px; outline: none; margin-top: 5px;
+}
+
+.btn-group { display: flex; gap: 10px; margin-top: 8px; }
+.btn-tool { flex: 1; background: var(--bg-card); border: 1px solid var(--border-color); color: white; padding: 8px; border-radius: 6px; cursor: pointer; }
+.btn-tool:hover { border-color: var(--neon-blue); }
+
+/* مسرح معاينة الصورة والفيديو */
+.canvas-panel { display: flex; flex-direction: column; gap: 15px; }
+.work-surface {
+    flex: 1; background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: 12px; display: flex; justify-content: center; align-items: center; position: relative; min-height: 450px; overflow: hidden;
+}
+.placeholder-view { text-align: center; color: var(--text-muted); }
+.placeholder-view i { font-size: 50px; margin-bottom: 15px; color: var(--border-color); }
+
+canvas { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.btn-success { background: var(--neon-green); color: var(--bg-dark); font-weight: bold; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; box-shadow: 0 0 15px rgba(0, 255, 135, 0.3); }
+
+/* لودر التحميل الخاص بمعالجة الأكواد */
+.loader-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(5,7,12,0.85); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:15px; z-index:5; }
+.spinner { width: 40px; height: 40px; border: 4px solid rgba(0,240,255,0.1); border-top-color: var(--neon-blue); border-radius: 50%; animation: spin 1s infinite linear; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* ستايل مشغل الصوت والموجات */
+.audio-player-box { width: 80%; text-align: center; background: var(--bg-card); padding: 30px; border-radius: 15px; border: 1px solid var(--border-color); }
+.wave-visualizer { display: flex; justify-content: center; gap: 5px; height: 40px; margin-bottom: 20px; }
+.wave-visualizer .bar { width: 6px; height: 100%; background: var(--neon-blue); animation: waveDance 1s infinite ease-in-out alternate; }
+@keyframes waveDance { 0% { transform: scaleY(0.3); } 100% { transform: scaleY(1); } }
+
+.btn-effect { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); color: white; padding: 12px; border-radius: 8px; text-align: right; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.2s; }
+.btn-effect:hover { border-color: var(--neon-blue); background: rgba(0,240,255,0.02); }
+
+.hidden { display: none !important; }
+.mt-20 { margin-top: 20px; }
+.mt-10 { margin-top: 10px; }
